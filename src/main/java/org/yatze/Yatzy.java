@@ -1,9 +1,6 @@
 package org.yatze;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Yatzy {
 
@@ -76,6 +73,23 @@ public class Yatzy {
     }
 
     public static int twoPairs(int d1, int d2, int d3, int d4, int d5) {
-        return 6;
+        int[] values = new int[5];
+        values[0] = d1;
+        values[1] = d2;
+        values[2] = d3;
+        values[3] = d4;
+        values[4] = d5;
+        Set<Integer> pairs = new HashSet<>(Collections.emptySet());
+        for (int i = 0; i < values.length; i++) {
+            for (int j = 0; j < values.length; j++)
+                if (j != i && values[j] == values[i])
+                    pairs.add(values[j]);
+        }
+        if (pairs.size() > 1) {
+            return pairs.stream().reduce(0,
+                    (sum, value) -> sum + (value * 2)
+            );
+        }
+        return 0;
     }
 }
