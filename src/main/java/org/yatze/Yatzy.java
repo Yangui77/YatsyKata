@@ -10,6 +10,18 @@ public class Yatzy {
         return sum(1, d1, d2, d3, d4, d5);
     }
 
+    public static int threes(int d1, int d2, int d3, int d4, int d5) {
+        return sum(3, d1, d2, d3, d4, d5);
+    }
+
+    public static int Fours(int d1, int d2, int d3, int d4, int d5) {
+        return sum(4, d1, d2, d3, d4, d5);
+    }
+
+    public static int Fives(int d1, int d2, int d3, int d4, int d5) {
+        return sum(5, d1, d2, d3, d4, d5);
+    }
+
     private static int sum(int value, int d1, int d2, int d3, int d4, int d5) {
         int sum = 0;
         if (d1 == value) {
@@ -28,17 +40,5 @@ public class Yatzy {
             sum += value;
         }
         return sum;
-    }
-
-    public static int threes(int d1, int d2, int d3, int d4, int d5) {
-        return sum(3, d1, d2, d3, d4, d5);
-    }
-
-    public static int Fours(int d1, int d2, int d3, int d4, int d5) {
-        return sum(4, d1, d2, d3, d4, d5);
-    }
-
-    public static int Fives(int d1, int d2, int d3, int d4, int d5) {
-        return sum(5, d1, d2, d3, d4, d5);
     }
 }
