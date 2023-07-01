@@ -9,7 +9,8 @@ public class YatzyTest {
 
     @ParameterizedTest
     @CsvSource({
-            "2, 2, 3, 4, 5, 4"
+            "2, 2, 3, 4, 5, 4",
+            "2, 2, 2, 4, 5, 6"
     })
     void shouldGetValidResultForTwos(int d1, int d2, int d3, int d4, int d5, int expected) {
         assertEquals(expected, Yatzy.twos(d1, d2, d3, d4, d5));
