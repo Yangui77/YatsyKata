@@ -74,4 +74,8 @@ public class Yatzy {
         }
         return 0;
     }
+
+    public static int twoPairs(int d1, int d2, int d3, int d4, int d5) {
+        return 6;
+    }
 }

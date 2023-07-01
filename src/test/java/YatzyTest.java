@@ -109,4 +109,12 @@ public class YatzyTest {
     void shouldGetValidResultForPair(int d1, int d2, int d3, int d4, int d5, int expected) {
         assertEquals(expected, Yatzy.pair(d1, d2, d3, d4, d5));
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1, 1, 2, 2, 6, 6"
+    })
+    void shouldGetValidResultForTwoPairs(int d1, int d2, int d3, int d4, int d5, int expected) {
+        assertEquals(expected, Yatzy.twoPairs(d1, d2, d3, d4, d5));
+    }
 }
