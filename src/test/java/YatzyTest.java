@@ -98,7 +98,9 @@ public class YatzyTest {
     @ParameterizedTest
     @CsvSource({
             "1, 1, 3, 2, 6, 2",
-            "3, 2, 1, 5, 8, 0"
+            "3, 2, 1, 5, 8, 0",
+            "2, 2, 5, 1, 3, 4",
+            "5, 4, 3, 1, 1, 2"
     })
     void shouldGetValidResultForPair(int d1, int d2, int d3, int d4, int d5, int expected) {
         assertEquals(expected, Yatzy.pair(d1, d2, d3, d4, d5));
