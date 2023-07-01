@@ -137,6 +137,13 @@ public class Yatzy {
     }
 
     public int largeStraight() {
-        return 20;
+        List<Integer> largeStraightValues = List.of(2, 3, 4, 5, 6);
+        if (largeStraightValues.stream().allMatch(
+                largeStraightValue->
+                        Arrays.stream(values).anyMatch(value -> value == largeStraightValue)
+        )) {
+            return 20;
+        }
+        return 0;
     }
 }
