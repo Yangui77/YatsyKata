@@ -104,7 +104,7 @@ public class Yatzy {
                 }
         );
         Optional<Map.Entry<Integer, Integer>> result = duplicatesCount.entrySet().stream().filter(
-                integerIntegerEntry -> integerIntegerEntry.getValue() == 3
+                integerIntegerEntry -> integerIntegerEntry.getValue() > 2
         ).findFirst();
         return result.map(integerIntegerEntry -> integerIntegerEntry.getKey() * 3).orElse(0);
     }
