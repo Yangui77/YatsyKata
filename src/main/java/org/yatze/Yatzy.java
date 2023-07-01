@@ -121,6 +121,7 @@ public class Yatzy {
     }
 
     public int yatzy() {
-        return 50;
+        boolean isYatzy = getKeyForMatchingDuplicatesCount(getDuplicatesMap(), 5) != 0;
+        return isYatzy ? 50 : 0;
     }
 }
