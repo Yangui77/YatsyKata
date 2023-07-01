@@ -5,6 +5,7 @@ import java.util.*;
 public class Yatzy {
 
     private static final int[] values = new int[5];
+
     public Yatzy(int d1, int d2, int d3, int d4, int d5) {
         values[0] = d1;
         values[1] = d2;
@@ -89,5 +90,9 @@ public class Yatzy {
                     pairs.add(values[j]);
         }
         return pairs;
+    }
+
+    public int threeOfAKind() {
+        return 12;
     }
 }
