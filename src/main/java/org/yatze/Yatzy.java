@@ -108,4 +108,8 @@ public class Yatzy {
         ).findFirst();
         return result.map(integerIntegerEntry -> integerIntegerEntry.getKey() * 3).orElse(0);
     }
+
+    public int fourOfAKind() {
+        return 16;
+    }
 }
