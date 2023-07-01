@@ -1,6 +1,9 @@
 package org.yatze;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 public class Yatzy {
 
@@ -60,10 +63,15 @@ public class Yatzy {
         values[2] = d3;
         values[3] = d4;
         values[4] = d5;
-        for (int i =0;i<values.length;i++) {
-            for (int j=0;j<values.length;j++)
-                if (j!=i && values[j] == values[i])
-                    return values[j] * 2;
-        } return 0;
+        List<Integer> pairs = new ArrayList<>();
+        for (int i = 0; i < values.length; i++) {
+            for (int j = 0; j < values.length; j++)
+                if (j != i && values[j] == values[i])
+                    pairs.add(values[j]);
+        }
+        if (pairs.size() > 0) {
+            return pairs.stream().max(Comparator.comparingInt(o -> o)).get() * 2;
+        }
+        return 0;
     }
 }
