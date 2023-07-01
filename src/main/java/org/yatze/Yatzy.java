@@ -1,5 +1,7 @@
 package org.yatze;
 
+import java.util.Arrays;
+
 public class Yatzy {
 
     public static int twos(int d1, int d2, int d3, int d4, int d5) {
@@ -25,6 +27,7 @@ public class Yatzy {
     public static int Sixes(int d1, int d2, int d3, int d4, int d5) {
         return sum(6, d1, d2, d3, d4, d5);
     }
+
     public static int chances(int d1, int d2, int d3, int d4, int d5) {
         return d1 + d2 + d3 + d4 + d5;
     }
@@ -51,6 +54,16 @@ public class Yatzy {
     }
 
     public static int pair(int d1, int d2, int d3, int d4, int d5) {
-        return 2;
+        int[] values = new int[5];
+        values[0] = d1;
+        values[1] = d2;
+        values[2] = d3;
+        values[3] = d4;
+        values[4] = d5;
+        for (int i =0;i<values.length;i++) {
+            for (int j=0;j<values.length;j++)
+                if (j!=i && values[j] == values[i])
+                    return values[j] * 2;
+        } return 0;
     }
 }
