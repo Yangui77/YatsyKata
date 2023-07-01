@@ -60,12 +60,7 @@ public class Yatzy {
         values[2] = d3;
         values[3] = d4;
         values[4] = d5;
-        List<Integer> pairs = new ArrayList<>();
-        for (int i = 0; i < values.length; i++) {
-            for (int j = 0; j < values.length; j++)
-                if (j != i && values[j] == values[i])
-                    pairs.add(values[j]);
-        }
+        Set<Integer> pairs = getPairs(values);
         if (pairs.size() > 0) {
             return pairs.stream().max(Comparator.comparingInt(o -> o)).get() * 2;
         }
@@ -79,17 +74,22 @@ public class Yatzy {
         values[2] = d3;
         values[3] = d4;
         values[4] = d5;
-        Set<Integer> pairs = new HashSet<>(Collections.emptySet());
-        for (int i = 0; i < values.length; i++) {
-            for (int j = 0; j < values.length; j++)
-                if (j != i && values[j] == values[i])
-                    pairs.add(values[j]);
-        }
+        Set<Integer> pairs = getPairs(values);
         if (pairs.size() > 1) {
             return pairs.stream().reduce(0,
                     (sum, value) -> sum + (value * 2)
             );
         }
         return 0;
+    }
+
+    private static Set<Integer> getPairs(int[] values) {
+        Set<Integer> pairs = new HashSet<>(Collections.emptySet());
+        for (int i = 0; i < values.length; i++) {
+            for (int j = 0; j < values.length; j++)
+                if (j != i && values[j] == values[i])
+                    pairs.add(values[j]);
+        }
+        return pairs;
     }
 }
