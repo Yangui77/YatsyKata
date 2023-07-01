@@ -173,7 +173,10 @@ public class YatzyTest {
     @ParameterizedTest
     @CsvSource({
             "2, 3, 4, 5, 6, 20",
-            "1, 1, 1, 1, 1, 0"
+            "1, 1, 1, 1, 1, 0",
+            "2, 4, 5, 6, 3, 20",
+            "2, 6, 5, 4, 3, 20",
+            "2, 3, 4, 5, 5, 0"
     })
     void shouldGetValidResultForLargeStraight(int d1, int d2, int d3, int d4, int d5, int expected) {
         assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).largeStraight());
