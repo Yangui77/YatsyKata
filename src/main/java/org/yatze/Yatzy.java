@@ -126,6 +126,13 @@ public class Yatzy {
     }
 
     public int smallStraight() {
-        return 15;
+        List<Integer> smallStraightValues = List.of(1, 2, 3, 4, 5);
+        if (smallStraightValues.stream().allMatch(
+                smallStraightValue ->
+                Arrays.stream(values).anyMatch(value -> value == smallStraightValue)
+        )) {
+            return 15;
+        }
+        return 0;
     }
 }
