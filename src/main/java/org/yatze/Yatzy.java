@@ -14,36 +14,36 @@ public class Yatzy {
         values[4] = d5;
     }
 
-    public static int twos() {
+    public int twos() {
         return sum(2);
     }
 
-    public static int ones() {
+    public int ones() {
         return sum(1);
     }
 
-    public static int threes() {
+    public int threes() {
         return sum(3);
     }
 
-    public static int Fours() {
+    public int Fours() {
         return sum(4);
     }
 
-    public static int Fives() {
+    public int Fives() {
         return sum(5);
     }
 
-    public static int Sixes() {
+    public int Sixes() {
         return sum(6);
     }
 
-    public static int chances() {
+    public int chances() {
         return Arrays.stream(values).sum();
     }
 
 
-    private static int sum(int value) {
+    private int sum(int value) {
         int sum = 0;
         if (values[0] == value) {
             sum += value;
@@ -63,7 +63,7 @@ public class Yatzy {
         return sum;
     }
 
-    public static int pair() {
+    public int pair() {
         Set<Integer> pairs = getPairs();
         if (pairs.size() > 0) {
             return pairs.stream().max(Comparator.comparingInt(o -> o)).get() * 2;
@@ -71,7 +71,7 @@ public class Yatzy {
         return 0;
     }
 
-    public static int twoPairs() {
+    public int twoPairs() {
         Set<Integer> pairs = getPairs();
         if (pairs.size() > 1) {
             return pairs.stream().reduce(0,
@@ -81,7 +81,7 @@ public class Yatzy {
         return 0;
     }
 
-    private static Set<Integer> getPairs() {
+    private Set<Integer> getPairs() {
 
         Set<Integer> pairs = new HashSet<>(Collections.emptySet());
         for (int i = 0; i < values.length; i++) {
@@ -118,5 +118,9 @@ public class Yatzy {
         return duplicatesCount.entrySet().stream().filter(
                 integerIntegerEntry -> integerIntegerEntry.getValue() > wantedDuplicateCount - 1
         ).findFirst().map(Map.Entry::getKey).orElse(0);
+    }
+
+    public int yatzy() {
+        return 50;
     }
 }
