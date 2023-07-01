@@ -93,6 +93,19 @@ public class Yatzy {
     }
 
     public int threeOfAKind() {
-        return 12;
+        Map<Integer, Integer> duplicatesCount = new HashMap<>();
+        Arrays.stream(values).forEach(
+                value -> {
+                    if (duplicatesCount.containsKey(value)) {
+                        duplicatesCount.put(value, duplicatesCount.get(value) + 1);
+                    } else {
+                        duplicatesCount.put(value, 1);
+                    }
+                }
+        );
+        Optional<Map.Entry<Integer, Integer>> result = duplicatesCount.entrySet().stream().filter(
+                integerIntegerEntry -> integerIntegerEntry.getValue() == 3
+        ).findFirst();
+        return result.map(integerIntegerEntry -> integerIntegerEntry.getKey() * 3).orElse(0);
     }
 }
