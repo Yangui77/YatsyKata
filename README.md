@@ -1,0 +1,2 @@
+# YatsyKata
+Kata for GoMind
