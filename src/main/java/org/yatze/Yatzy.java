@@ -129,7 +129,7 @@ public class Yatzy {
         List<Integer> smallStraightValues = List.of(1, 2, 3, 4, 5);
         if (smallStraightValues.stream().allMatch(
                 smallStraightValue ->
-                Arrays.stream(values).anyMatch(value -> value == smallStraightValue)
+                        Arrays.stream(values).anyMatch(value -> value == smallStraightValue)
         )) {
             return 15;
         }
@@ -139,7 +139,7 @@ public class Yatzy {
     public int largeStraight() {
         List<Integer> largeStraightValues = List.of(2, 3, 4, 5, 6);
         if (largeStraightValues.stream().allMatch(
-                largeStraightValue->
+                largeStraightValue ->
                         Arrays.stream(values).anyMatch(value -> value == largeStraightValue)
         )) {
             return 20;
@@ -148,6 +148,14 @@ public class Yatzy {
     }
 
     public int fullHouse() {
-        return 13;
+        int threeOfAKindValue = getKeyForMatchingDuplicatesCount(getDuplicatesMap(), 3);
+        Set<Integer> pairs = getPairs();
+        int pair = pairs.stream().filter(
+                pairValue -> pairValue != threeOfAKindValue
+        ).findAny().orElse(0);
+        if (pair != 0 && threeOfAKindValue != 0) {
+            return pair * 2 + threeOfAKindValue * 3;
+        }
+        return 0;
     }
 }
