@@ -15,51 +15,37 @@ public class Yatzy {
     }
 
     public int twos() {
-        return sum(2);
+        return sumForValue(2);
     }
 
     public int ones() {
-        return sum(1);
+        return sumForValue(1);
     }
 
     public int threes() {
-        return sum(3);
+        return sumForValue(3);
     }
 
     public int Fours() {
-        return sum(4);
+        return sumForValue(4);
     }
 
     public int Fives() {
-        return sum(5);
+        return sumForValue(5);
     }
 
     public int Sixes() {
-        return sum(6);
+        return sumForValue(6);
     }
 
     public int chances() {
         return Arrays.stream(values).sum();
     }
 
-    private int sum(int value) {
-        int sum = 0;
-        if (values[0] == value) {
-            sum += value;
-        }
-        if (values[1] == value) {
-            sum += value;
-        }
-        if (values[2] == value) {
-            sum += value;
-        }
-        if (values[3] == value) {
-            sum += value;
-        }
-        if (values[4] == value) {
-            sum += value;
-        }
-        return sum;
+    private int sumForValue(int value) {
+        return Arrays.stream(values).filter(
+                value1 -> value1 == value
+        ).sum();
     }
 
     public int pair() {
