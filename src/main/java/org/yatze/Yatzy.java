@@ -124,4 +124,8 @@ public class Yatzy {
         boolean isYatzy = getKeyForMatchingDuplicatesCount(getDuplicatesMap(), 5) != 0;
         return isYatzy ? 50 : 0;
     }
+
+    public int smallStraight() {
+        return 15;
+    }
 }
