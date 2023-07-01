@@ -93,23 +93,14 @@ public class Yatzy {
     }
 
     public int threeOfAKind() {
-        Map<Integer, Integer> duplicatesCount = new HashMap<>();
-        Arrays.stream(values).forEach(
-                value -> {
-                    if (duplicatesCount.containsKey(value)) {
-                        duplicatesCount.put(value, duplicatesCount.get(value) + 1);
-                    } else {
-                        duplicatesCount.put(value, 1);
-                    }
-                }
-        );
-        Optional<Map.Entry<Integer, Integer>> result = duplicatesCount.entrySet().stream().filter(
-                integerIntegerEntry -> integerIntegerEntry.getValue() > 2
-        ).findFirst();
-        return result.map(integerIntegerEntry -> integerIntegerEntry.getKey() * 3).orElse(0);
+        return getKeyForMatchingDuplicatesCount(getDuplicatesMap(), 3) * 3;
     }
 
     public int fourOfAKind() {
+        return getKeyForMatchingDuplicatesCount(getDuplicatesMap(), 4) * 4;
+    }
+
+    private Map<Integer, Integer> getDuplicatesMap() {
         Map<Integer, Integer> duplicatesCount = new HashMap<>();
         Arrays.stream(values).forEach(
                 value -> {
@@ -120,9 +111,12 @@ public class Yatzy {
                     }
                 }
         );
-        Optional<Map.Entry<Integer, Integer>> result = duplicatesCount.entrySet().stream().filter(
-                integerIntegerEntry -> integerIntegerEntry.getValue() > 3
-        ).findFirst();
-        return result.map(integerIntegerEntry -> integerIntegerEntry.getKey() * 4).orElse(0);
+        return duplicatesCount;
+    }
+
+    private Integer getKeyForMatchingDuplicatesCount(Map<Integer, Integer> duplicatesCount, int wantedDuplicateCount) {
+        return duplicatesCount.entrySet().stream().filter(
+                integerIntegerEntry -> integerIntegerEntry.getValue() > wantedDuplicateCount - 1
+        ).findFirst().map(Map.Entry::getKey).orElse(0);
     }
 }
