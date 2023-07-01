@@ -42,4 +42,30 @@ public class YatzyTest {
     void shouldGetValidResultForThrees(int d1, int d2, int d3, int d4, int d5, int expected) {
         assertEquals(expected, Yatzy.threes(d1, d2, d3, d4, d5));
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1, 2, 3, 4, 5, 4",
+            "2, 3, 3, 4, 5, 4",
+            "3, 4, 5, 3, 3, 4",
+            "1, 1, 1, 1, 1, 0",
+            "4, 4, 2, 4, 3, 12"
+    })
+    void shouldGetValidResultForFours(int d1, int d2, int d3, int d4, int d5, int expected) {
+        assertEquals(expected, Yatzy.Fours(d1, d2, d3, d4, d5));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1, 2, 3, 4, 5, 5",
+            "2, 3, 3, 4, 5, 5",
+            "3, 4, 5, 3, 3, 5",
+            "1, 1, 1, 1, 1, 0",
+            "4, 4, 2, 4, 3, 0",
+            "5, 5, 5, 5, 5, 25",
+            "5, 5, 2, 1, 3, 10"
+    })
+    void shouldGetValidResultForFives(int d1, int d2, int d3, int d4, int d5, int expected) {
+        assertEquals(expected, Yatzy.Fives(d1, d2, d3, d4, d5));
+    }
 }
