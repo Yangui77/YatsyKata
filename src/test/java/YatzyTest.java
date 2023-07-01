@@ -72,7 +72,10 @@ public class YatzyTest {
     @ParameterizedTest
     @CsvSource({
             "1, 2, 3, 4, 5, 15",
-            "2, 2, 3, 2, 5, 14"
+            "2, 2, 3, 2, 5, 14",
+            "1, 1, 1, 1, 1, 5",
+            "2, 2, 2, 3, 4, 13",
+            "3, 3, 3, 1, 1, 11"
     })
     void shouldGetValidResultForChances(int d1, int d2, int d3, int d4, int d5, int expected) {
         assertEquals(expected, Yatzy.chances(d1, d2, d3, d4, d5));
