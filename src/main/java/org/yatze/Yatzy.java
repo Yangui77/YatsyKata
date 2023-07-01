@@ -146,4 +146,8 @@ public class Yatzy {
         }
         return 0;
     }
+
+    public int fullHouse() {
+        return 13;
+    }
 }

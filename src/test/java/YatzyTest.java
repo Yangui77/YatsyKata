@@ -181,4 +181,13 @@ public class YatzyTest {
     void shouldGetValidResultForLargeStraight(int d1, int d2, int d3, int d4, int d5, int expected) {
         assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).largeStraight());
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "3, 3, 3, 2, 2, 13",
+            "4, 4, 4, 4, 4, 0"
+    })
+    void shouldGetValidResultForFullHouse(int d1, int d2, int d3, int d4, int d5, int expected) {
+        assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).fullHouse());
+    }
 }
