@@ -16,7 +16,8 @@ public class YatzyTest {
             "1, 1, 1, 1, 1, 0"
     })
     void shouldGetValidResultForTwos(int d1, int d2, int d3, int d4, int d5, int expected) {
-        assertEquals(expected, Yatzy.twos(d1, d2, d3, d4, d5));
+        new Yatzy(d1, d2, d3, d4, d5);
+        assertEquals(expected, Yatzy.twos());
     }
 
     @ParameterizedTest
@@ -29,7 +30,7 @@ public class YatzyTest {
             "2, 3, 4, 1, 1, 2"
     })
     void shouldGetValidResultForOnes(int d1, int d2, int d3, int d4, int d5, int expected) {
-        assertEquals(expected, Yatzy.ones(d1, d2, d3, d4, d5));
+        assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).ones());
     }
 
     @ParameterizedTest
@@ -40,7 +41,7 @@ public class YatzyTest {
             "1, 1, 1, 1, 1, 0"
     })
     void shouldGetValidResultForThrees(int d1, int d2, int d3, int d4, int d5, int expected) {
-        assertEquals(expected, Yatzy.threes(d1, d2, d3, d4, d5));
+        assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).threes());
     }
 
     @ParameterizedTest
@@ -52,7 +53,7 @@ public class YatzyTest {
             "4, 4, 2, 4, 3, 12"
     })
     void shouldGetValidResultForFours(int d1, int d2, int d3, int d4, int d5, int expected) {
-        assertEquals(expected, Yatzy.Fours(d1, d2, d3, d4, d5));
+        assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).Fours());
     }
 
     @ParameterizedTest
@@ -66,7 +67,7 @@ public class YatzyTest {
             "5, 5, 2, 1, 3, 10"
     })
     void shouldGetValidResultForFives(int d1, int d2, int d3, int d4, int d5, int expected) {
-        assertEquals(expected, Yatzy.Fives(d1, d2, d3, d4, d5));
+        assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).Fives());
     }
 
     @ParameterizedTest
@@ -80,7 +81,7 @@ public class YatzyTest {
             "5, 5, 6, 1, 3, 6"
     })
     void shouldGetValidResultForSixes(int d1, int d2, int d3, int d4, int d5, int expected) {
-        assertEquals(expected, Yatzy.Sixes(d1, d2, d3, d4, d5));
+        assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).Sixes());
     }
 
     @ParameterizedTest
@@ -92,7 +93,7 @@ public class YatzyTest {
             "3, 3, 3, 1, 1, 11"
     })
     void shouldGetValidResultForChances(int d1, int d2, int d3, int d4, int d5, int expected) {
-        assertEquals(expected, Yatzy.chances(d1, d2, d3, d4, d5));
+        assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).chances());
     }
 
     @ParameterizedTest
@@ -108,7 +109,7 @@ public class YatzyTest {
             "1, 2, 3, 4, 5, 0"
     })
     void shouldGetValidResultForPair(int d1, int d2, int d3, int d4, int d5, int expected) {
-        assertEquals(expected, Yatzy.pair(d1, d2, d3, d4, d5));
+        assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).pair());
     }
 
     @ParameterizedTest
@@ -119,6 +120,6 @@ public class YatzyTest {
             "2, 2, 5, 5, 2, 14"
     })
     void shouldGetValidResultForTwoPairs(int d1, int d2, int d3, int d4, int d5, int expected) {
-        assertEquals(expected, Yatzy.twoPairs(d1, d2, d3, d4, d5));
+        assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).twoPairs());
     }
 }
