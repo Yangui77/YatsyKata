@@ -19,5 +19,11 @@ public class YatzyTest {
         assertEquals(expected, Yatzy.twos(d1, d2, d3, d4, d5));
     }
 
-
+    @ParameterizedTest
+    @CsvSource({
+            "1, 2, 3, 4, 5, 1"
+    })
+    void shouldGetValidResultForOnes(int d1, int d2, int d3, int d4, int d5, int expected) {
+        assertEquals(expected, Yatzy.ones(d1, d2, d3, d4, d5));
+    }
 }
