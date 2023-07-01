@@ -139,6 +139,7 @@ public class YatzyTest {
     @ParameterizedTest
     @CsvSource({
             "4, 4, 4, 4, 6, 16",
+            "3, 3, 3, 3, 1, 12"
     })
     void shouldGetValidResultForFourOfAKind(int d1, int d2, int d3, int d4, int d5, int expected) {
         assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).fourOfAKind());
