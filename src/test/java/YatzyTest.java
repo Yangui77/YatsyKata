@@ -71,6 +71,20 @@ public class YatzyTest {
 
     @ParameterizedTest
     @CsvSource({
+            "1, 2, 3, 4, 5, 0",
+            "2, 3, 3, 4, 5, 0",
+            "3, 4, 5, 3, 6, 6",
+            "1, 1, 1, 6, 6, 12",
+            "4, 4, 2, 6, 1, 6",
+            "5, 5, 5, 5, 6, 6",
+            "5, 5, 6, 1, 3, 6"
+    })
+    void shouldGetValidResultForSixes(int d1, int d2, int d3, int d4, int d5, int expected) {
+        assertEquals(expected, Yatzy.Sixes(d1, d2, d3, d4, d5));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
             "1, 2, 3, 4, 5, 15",
             "2, 2, 3, 2, 5, 14",
             "1, 1, 1, 1, 1, 5",

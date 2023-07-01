@@ -22,6 +22,14 @@ public class Yatzy {
         return sum(5, d1, d2, d3, d4, d5);
     }
 
+    public static int Sixes(int d1, int d2, int d3, int d4, int d5) {
+        return sum(6, d1, d2, d3, d4, d5);
+    }
+    public static int chances(int d1, int d2, int d3, int d4, int d5) {
+        return d1 + d2 + d3 + d4 + d5;
+    }
+
+
     private static int sum(int value, int d1, int d2, int d3, int d4, int d5) {
         int sum = 0;
         if (d1 == value) {
@@ -40,9 +48,5 @@ public class Yatzy {
             sum += value;
         }
         return sum;
-    }
-
-    public static int chances(int d1, int d2, int d3, int d4, int d5) {
-        return d1 + d2 + d3 + d4 + d5;
     }
 }
