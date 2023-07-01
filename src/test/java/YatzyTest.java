@@ -169,4 +169,12 @@ public class YatzyTest {
     void shouldGetValidResultForSmallStraight(int d1, int d2, int d3, int d4, int d5, int expected) {
         assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).smallStraight());
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "2, 3, 4, 5, 6, 20",
+    })
+    void shouldGetValidResultForLargeStraight(int d1, int d2, int d3, int d4, int d5, int expected) {
+        assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).largeStraight());
+    }
 }

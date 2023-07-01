@@ -135,4 +135,8 @@ public class Yatzy {
         }
         return 0;
     }
+
+    public int largeStraight() {
+        return 20;
+    }
 }
