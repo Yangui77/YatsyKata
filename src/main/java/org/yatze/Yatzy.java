@@ -42,7 +42,6 @@ public class Yatzy {
         return Arrays.stream(values).sum();
     }
 
-
     private int sum(int value) {
         int sum = 0;
         if (values[0] == value) {
@@ -82,7 +81,6 @@ public class Yatzy {
     }
 
     private Set<Integer> getPairs() {
-
         Set<Integer> pairs = new HashSet<>(Collections.emptySet());
         for (int i = 0; i < values.length; i++) {
             for (int j = 0; j < values.length; j++)
@@ -100,6 +98,52 @@ public class Yatzy {
         return getKeyForMatchingDuplicatesCount(getDuplicatesMap(), 4) * 4;
     }
 
+    public int fullHouse() {
+        int threeOfAKindValue = getKeyForMatchingDuplicatesCount(getDuplicatesMap(), 3);
+        Set<Integer> pairs = getPairs();
+        int pair = pairs.stream().filter(
+                pairValue -> pairValue != threeOfAKindValue
+        ).findAny().orElse(0);
+        if (pair != 0 && threeOfAKindValue != 0) {
+            return pair * 2 + threeOfAKindValue * 3;
+        }
+        return 0;
+    }
+
+    public int smallStraight() {
+        List<Integer> smallStraightValues = List.of(1, 2, 3, 4, 5);
+        if (isPerfectMatch(smallStraightValues)) {
+            return 15;
+        }
+        return 0;
+    }
+
+    public int largeStraight() {
+        List<Integer> largeStraightValues = List.of(2, 3, 4, 5, 6);
+        if (isPerfectMatch(largeStraightValues)) {
+            return 20;
+        }
+        return 0;
+    }
+
+    private boolean isPerfectMatch(List<Integer> valuesToMatch) {
+        return valuesToMatch.stream().allMatch(
+                valueToMatch ->
+                        Arrays.stream(values).anyMatch(value -> value == valueToMatch)
+        );
+    }
+
+    public int yatzy() {
+        boolean isYatzy = getKeyForMatchingDuplicatesCount(getDuplicatesMap(), 5) != 0;
+        return isYatzy ? 50 : 0;
+    }
+
+    private Integer getKeyForMatchingDuplicatesCount(Map<Integer, Integer> duplicatesCount, int wantedDuplicateCount) {
+        return duplicatesCount.entrySet().stream().filter(
+                integerIntegerEntry -> integerIntegerEntry.getValue() > wantedDuplicateCount - 1
+        ).findFirst().map(Map.Entry::getKey).orElse(0);
+    }
+
     private Map<Integer, Integer> getDuplicatesMap() {
         Map<Integer, Integer> duplicatesCount = new HashMap<>();
         Arrays.stream(values).forEach(
@@ -114,48 +158,4 @@ public class Yatzy {
         return duplicatesCount;
     }
 
-    private Integer getKeyForMatchingDuplicatesCount(Map<Integer, Integer> duplicatesCount, int wantedDuplicateCount) {
-        return duplicatesCount.entrySet().stream().filter(
-                integerIntegerEntry -> integerIntegerEntry.getValue() > wantedDuplicateCount - 1
-        ).findFirst().map(Map.Entry::getKey).orElse(0);
-    }
-
-    public int yatzy() {
-        boolean isYatzy = getKeyForMatchingDuplicatesCount(getDuplicatesMap(), 5) != 0;
-        return isYatzy ? 50 : 0;
-    }
-
-    public int smallStraight() {
-        List<Integer> smallStraightValues = List.of(1, 2, 3, 4, 5);
-        if (smallStraightValues.stream().allMatch(
-                smallStraightValue ->
-                        Arrays.stream(values).anyMatch(value -> value == smallStraightValue)
-        )) {
-            return 15;
-        }
-        return 0;
-    }
-
-    public int largeStraight() {
-        List<Integer> largeStraightValues = List.of(2, 3, 4, 5, 6);
-        if (largeStraightValues.stream().allMatch(
-                largeStraightValue ->
-                        Arrays.stream(values).anyMatch(value -> value == largeStraightValue)
-        )) {
-            return 20;
-        }
-        return 0;
-    }
-
-    public int fullHouse() {
-        int threeOfAKindValue = getKeyForMatchingDuplicatesCount(getDuplicatesMap(), 3);
-        Set<Integer> pairs = getPairs();
-        int pair = pairs.stream().filter(
-                pairValue -> pairValue != threeOfAKindValue
-        ).findAny().orElse(0);
-        if (pair != 0 && threeOfAKindValue != 0) {
-            return pair * 2 + threeOfAKindValue * 3;
-        }
-        return 0;
-    }
 }
