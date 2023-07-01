@@ -161,7 +161,10 @@ public class YatzyTest {
     @ParameterizedTest
     @CsvSource({
             "1, 2, 3, 4, 5, 15",
-            "1, 2, 2, 3, 4, 0"
+            "1, 2, 2, 3, 4, 0",
+            "2, 1, 3, 4, 5, 15",
+            "3, 4, 5, 1, 2, 15",
+            "3, 4, 5, 1, 3, 0"
     })
     void shouldGetValidResultForSmallStraight(int d1, int d2, int d3, int d4, int d5, int expected) {
         assertEquals(expected, new Yatzy(d1, d2, d3, d4, d5).smallStraight());
